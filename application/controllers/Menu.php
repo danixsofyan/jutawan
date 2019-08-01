@@ -11,7 +11,7 @@ class Menu extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Menu Management';
+        $data['title'] = 'Pengelolaan Menu';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['menu'] = $this->db->get('user_menu')->result_array();
@@ -22,7 +22,7 @@ class Menu extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('menu/index', $data);
+            $this->load->view('admin/menu/index', $data);
             $this->load->view('templates/footer');
         } else {
             $this->db->insert('user_menu', ['menu' => $this->input->post('menu')]);
@@ -34,7 +34,7 @@ class Menu extends CI_Controller
 
     public function submenu()
     {
-        $data['title'] = 'Submenu Management';
+        $data['title'] = 'Pengelolaan Submenu';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Menu_model', 'menu');
 
@@ -50,7 +50,7 @@ class Menu extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('menu/submenu', $data);
+            $this->load->view('admin/menu/submenu', $data);
             $this->load->view('templates/footer');
         } else {
             $data = [

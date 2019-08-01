@@ -7,20 +7,33 @@ class User extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
+        $this->load->model('M_admin');
     }
 
     public function index()
     {
-        $data['title'] = 'My Profile';
+        $data['title'] = 'User';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['alluser'] = $this->M_admin->getUser();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/user/index', $data);
+        $this->load->view('templates/footer');
+    }
+    
+    public function profile()
+    {
+        $data['title'] = 'Profile';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('user/index', $data);
+        $this->load->view('admin/user/profile', $data);
         $this->load->view('templates/footer');
     }
-
 
     public function edit()
     {
@@ -33,7 +46,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('user/edit', $data);
+            $this->load->view('admin/user/edit', $data);
             $this->load->view('templates/footer');
         } else {
             $name = $this->input->post('name');
@@ -73,7 +86,7 @@ class User extends CI_Controller
 
     public function changePassword()
     {
-        $data['title'] = 'Change Password';
+        $data['title'] = 'Ganti Password';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
@@ -84,7 +97,7 @@ class User extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('user/changepassword', $data);
+            $this->load->view('admin/user/changepassword', $data);
             $this->load->view('templates/footer');
         } else {
             $current_password = $this->input->post('current_password');

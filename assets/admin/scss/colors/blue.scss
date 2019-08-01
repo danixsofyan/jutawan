@@ -29,7 +29,7 @@
         > ul > li {
             &.active > a {
                 color: $themecolor;
-                border-color: $themecolor!important;   
+                border-left: 3px solid $themecolor;
                 i {
                     color: $themecolor;
                 }

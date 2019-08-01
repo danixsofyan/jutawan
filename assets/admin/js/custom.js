@@ -11,14 +11,16 @@ $(function () {
     // ==============================================================  
     var set = function () {
         var width = (window.innerWidth > 0) ? window.innerWidth : this.screen.width;
-        var topOffset = 190;
+        var topOffset = 55;
         if (width < 1170) {
             $("body").addClass("mini-sidebar");
+            $('.navbar-brand span').hide();
             $(".sidebartoggler i").addClass("ti-menu");
         }
         else {
             $("body").removeClass("mini-sidebar");
-       }
+            $('.navbar-brand span').show();
+        }
          var height = ((window.innerHeight > 0) ? window.innerHeight : this.screen.height) - 1;
         height = height - topOffset;
         if (height < 1) height = 1;
@@ -82,7 +84,7 @@ $(function () {
     // ============================================================== 
     // Perfact scrollbar
     // ============================================================== 
-    $('.right-side-panel, .message-center, .right-sidebar').perfectScrollbar();
+    $('.scroll-sidebar, .right-side-panel, .message-center, .right-sidebar').perfectScrollbar();
     // ============================================================== 
     // Resize all elements
     // ============================================================== 
@@ -111,21 +113,6 @@ $(function () {
     $('a[data-action="close"]').on('click', function () {
         $(this).closest('.card').removeClass().slideUp('fast');
     });
-    // ============================================================== 
-    // fixed navigattion while scrolll
-    // ==============================================================
-    function collapseNavbar() {
-        if ($(window).scrollTop() > 80) {
-            $("body").addClass("fixed-sidebar");
-            $(".left-sidebar").addClass("animated slideInDown");
-             
-        } else {
-            $("body").removeClass("fixed-sidebar");
-            $(".left-sidebar").removeClass("animated slideInDown");
-        }
-    }
-    $(window).scroll(collapseNavbar);
-    collapseNavbar()
     // ============================================================== 
     // Color variation
     // ==============================================================

@@ -25,7 +25,7 @@
         > ul > li {
             &.active > a {
                 color: $themecolor;
-                border-color: $themecolor!important;   
+                border-left: 3px solid $themecolor;
                 i {
                     color: $themecolor;
                 }
@@ -58,8 +58,8 @@
         }
     }
     @media (min-width: 768px){
-        &.horizontal-nav .sidebar-nav #sidebarnav > li > ul, &.horizontal-nav .sidebar-nav #sidebarnav > li:hover > a{
-            background: $sidebar-alt; 
+        &.mini-sidebar .sidebar-nav #sidebarnav > li > ul, &.mini-sidebar .sidebar-nav #sidebarnav > li:hover > a{
+            background: $sidebar-alt;
         }
         
     }
