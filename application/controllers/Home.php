@@ -5,15 +5,15 @@ class Home extends CI_Controller {
 	function __construct(){
 
 		parent::__construct();
-		$this->load->model('M_home');
+		$this->load->model('Home_model');
 	}
 
 	public function index()
 	{
 		$data['title'] = 'Jutawan Disbudpar Kota Bandung';
-		$data['list'] = $this->M_home->getListHome();
-		$this->load->view('templates/home_header', $data);
+		$data['list'] = $this->Home_model->getListHome();
+		$this->load->view('templates/home/header', $data);
 		$this->load->view('home/index', $data);
-		$this->load->view('templates/home_footer', $data);
+		$this->load->view('templates/home/footer', $data);
 	}
 }

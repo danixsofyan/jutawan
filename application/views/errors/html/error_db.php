@@ -1,64 +1,44 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Database Error</title>
-<style type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.png">
 
-::selection { background-color: #E13300; color: white; }
-::-moz-selection { background-color: #E13300; color: white; }
+    <title>Database error</title>
 
-body {
-	background-color: #fff;
-	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
-	color: #4F5155;
-}
+    <!-- Bootstrap core CSS -->
+    <link href="<?= base_url('assets/error/'); ?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/error/'); ?>css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="<?= base_url('assets/error/'); ?>css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="<?= base_url('assets/error/'); ?>css/style.css" rel="stylesheet">
+    <link href="<?= base_url('assets/error/'); ?>css/style-responsive.css" rel="stylesheet" />
 
-a {
-	color: #003399;
-	background-color: transparent;
-	font-weight: normal;
-}
-
-h1 {
-	color: #444;
-	background-color: transparent;
-	border-bottom: 1px solid #D0D0D0;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
-}
-
-code {
-	font-family: Consolas, Monaco, Courier New, Courier, monospace;
-	font-size: 12px;
-	background-color: #f9f9f9;
-	border: 1px solid #D0D0D0;
-	color: #002166;
-	display: block;
-	margin: 14px 0 14px 0;
-	padding: 12px 10px 12px 10px;
-}
-
-#container {
-	margin: 10px;
-	border: 1px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
-}
-
-p {
-	margin: 12px 15px 12px 15px;
-}
-</style>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
-	</div>
-</body>
+
+  <body class="body-500">
+
+    <div class="container">
+
+      <section class="error-wrapper">
+          <i class="icon-500"></i>
+          <h1>Ouch!</h1>
+          <h2>Database error</h2>
+          <p class="page-500"><?php echo $message; ?></p>
+      </section>
+
+    </div>
+
+
+  </body>
 </html>

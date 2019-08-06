@@ -25,9 +25,6 @@
                                                             <a href="<?= base_url(); ?>">Beranda</a>
                                                         </li>
                                                         <li>
-                                                            <a href="<?= base_url('listing'); ?>">Tamabah Lokasi</a>
-                                                        </li>
-                                                        <li>
                                                             <a href="#">Data Pengunjung</a>
                                                         </li>
                                                         <li>
@@ -281,7 +278,7 @@
                                         <div class="atbd_listing_bottom_content">
                                             <div class="atbd_content_left">
                                                 <div class="atbd_listing_category">
-                                                    <a href=""><span class="la <?= $l['icon']; ?>"></span><?= $l['nama_ktrg']; ?></a>
+                                                    <a href=""><span class="la <?= $l['icon']; ?>"></span><?= $l['name']; ?></a>
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">

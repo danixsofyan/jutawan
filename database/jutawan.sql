@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 30, 2019 at 03:55 AM
--- Server version: 5.7.25
--- PHP Version: 7.3.1
+-- Generation Time: Aug 06, 2019 at 06:55 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `data_pengunjung` (
   `id` int(11) NOT NULL,
   `id_lokasi` int(11) NOT NULL,
-  `date` int(11) NOT NULL,
+  `date` date NOT NULL,
   `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -38,10 +38,11 @@ CREATE TABLE `data_pengunjung` (
 --
 
 INSERT INTO `data_pengunjung` (`id`, `id_lokasi`, `date`, `jumlah`) VALUES
-(1, 1, 1563523827, 500),
-(2, 2, 1563523827, 900),
-(3, 3, 1563523827, 44),
-(4, 1, 1563523827, 1000);
+(1, 1, '2019-07-01', 1000),
+(2, 1, '2019-07-02', 200),
+(3, 3, '2019-07-16', 5000),
+(4, 1, '2019-08-02', 4000),
+(5, 2, '2019-08-01', 100);
 
 -- --------------------------------------------------------
 
@@ -51,7 +52,7 @@ INSERT INTO `data_pengunjung` (`id`, `id_lokasi`, `date`, `jumlah`) VALUES
 
 CREATE TABLE `kategori` (
   `id` int(11) NOT NULL,
-  `nama_ktrg` varchar(128) NOT NULL,
+  `name` varchar(128) NOT NULL,
   `icon` varchar(128) NOT NULL,
   `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -60,7 +61,7 @@ CREATE TABLE `kategori` (
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id`, `nama_ktrg`, `icon`, `is_active`) VALUES
+INSERT INTO `kategori` (`id`, `name`, `icon`, `is_active`) VALUES
 (1, 'Edukasi', 'la-puzzle-piece', 1),
 (2, 'Belanja', 'la-shopping-cart', 1),
 (3, 'Menginap', 'la-bed', 1),
@@ -100,8 +101,8 @@ CREATE TABLE `lokasi` (
 --
 
 INSERT INTO `lokasi` (`id`, `nama_lks`, `kategori`, `deskripsi`, `tagline`, `tiket`, `ket`, `alamat`, `no_tlp`, `email`, `website`, `sosmed`, `oprational`, `photo`, `video`, `iduser`) VALUES
-(1, 'Museum Geologi Bandung', 1, 'Museum Geologi Bandung bla bla bla\r\n\r\nExcepteur sint occaecat cupidatat non proident, sunt in culpa kequi officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium dolorem que laudantium, totam rem aperiam the eaque ipsa quae abillo was inventore veritatis keret quasi aperiam architecto beatae vitae dicta sunt explicabo. Nemo ucxqui officia voluptatem accu santium doloremque laudantium, totam rem ape dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.', 'Kementerian ESDM | Badan Geologi', 5000, 'Ingin berwisata sambil belajar ilmu', 'Jl. Diponegoro No.57', '(022) 7213822', 'museum-geologi@grdc.esdm.go.id', 'http://museum.geology.esdm.go.id/', 1, 'Senin-Kamis 08:00-16:00\r\nSabtu-Minggu 08.00-14.00\r\nTiket Masuk Pelajar Rp.2000\r\nTiket masuk Wisatawan Asing Rp.10.000', 'p1.jpg', '-', 1),
-(2, 'Paris Van Java Mall', 2, 'Paris Van Java - Resort Lifestyle Place\r\nOne of a kind shopping centre in Asia which blends mediterranian architecture and lush greenery into a unique and memorable experience for all ages.\r\n \r\nRevel in an immersive shopping spree with world-renowned brands and creative entrepreneurs. Savour the tastes of the world while dining under the stars. Relish the beauty of nature in Paradiso and immortalize your visit enveloped by luscious flowers and exotic ambiance. Paris Van java - Resort Lifestyle Place bids you welcome for \"The Paris Van Java Experience\"\r\n', 'Resort Lifestyle Place', 0, 'pvj pvj pvj', 'Jl. Sukajadi No.131-139', '(022) 1234567', 'info@paris-van-java.com', 'http://www.parisvanjava.id/', 2, 'z', 'p2.jpg', '-', 1),
+(1, 'Museum Geologi Bandung', 1, 'Museum Geologi Bandung bla bla bla\r\n\r\nExcepteur sint occaecat cupidatat non proident, sunt in culpa kequi officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium dolorem que laudantium, totam rem aperiam the eaque ipsa quae abillo was inventore veritatis keret quasi aperiam architecto beatae vitae dicta sunt explicabo. Nemo ucxqui officia voluptatem accu santium doloremque laudantium, totam rem ape dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.', 'Kementerian ESDM | Badan Geologi', 5000, 'Ingin berwisata sambil belajar ilmu', 'Jl. Diponegoro No.57', '(022) 7213822', 'museum-geologi@grdc.esdm.go.id', 'http://museum.geology.esdm.go.id/', 1, 'Senin-Kamis 08:00-16:00\r\nSabtu-Minggu 08.00-14.00\r\nTiket Masuk Pelajar Rp.2000\r\nTiket masuk Wisatawan Asing Rp.10.000', 'p1.jpg', '-', 3),
+(2, 'Paris Van Java Mall', 2, 'Paris Van Java - Resort Lifestyle Place\r\nOne of a kind shopping centre in Asia which blends mediterranian architecture and lush greenery into a unique and memorable experience for all ages.\r\n \r\nRevel in an immersive shopping spree with world-renowned brands and creative entrepreneurs. Savour the tastes of the world while dining under the stars. Relish the beauty of nature in Paradiso and immortalize your visit enveloped by luscious flowers and exotic ambiance. Paris Van java - Resort Lifestyle Place bids you welcome for \"The Paris Van Java Experience\"\r\n', 'Resort Lifestyle Place', 0, 'pvj pvj pvj', 'Jl. Sukajadi No.131-139', '(022) 1234567', 'info@paris-van-java.com', 'http://www.parisvanjava.id/', 2, 'z', 'p2.jpg', '-', 3),
 (3, 'Saung Angklung Udjo', 4, 'Saung Angklung Udjo  merupakan sebuah tujuan wisata budaya dan edukasi yang lengkap, karena Saung Angklung Udjo memiliki arena pertunjukan, pusat kerajinan bambu dan workshop untuk alat musik bambu. Disamping itu, kehadiran Saung Angklung Udjo di Bandung menjadi lebih bermakna karena kepeduliannya untuk terus melestarikan dan mengembangkan kebudayaan Sunda – khususnya Angklung – kepada masyarakat melalui sarana pendidikan dan pelatihan.', 'Nature Culture in Harmony', 50000, 'angklung', 'Jl. Padasuka No.118', '(022) 7271714', 'info@angklung-udjo.co.id', 'https://angklungudjo.com/', 3, '1', 'p3.jpg', '-', 1);
 
 -- --------------------------------------------------------
@@ -170,8 +171,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(1, 'Dani Sofyan', 'danixsofyan@gmail.com', 'foto_dani_bw.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 1, 1, 1563523827),
-(2, 'Jutawan', 'jutawan@gmail.com', 'default.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 1, 1, 1563523827);
+(1, 'Dani Sofyan', 'danixsofyan@gmail.com', 'profile.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 1, 1, 1563523827),
+(2, 'Disbudpar', 'jutawan@gmail.com', 'stunningbandung.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 2, 1, 1563523827),
+(3, 'Museum Geologi', 'museumgeologi@gmail.com', 'default.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 3, 1, 1563523827);
 
 -- --------------------------------------------------------
 
@@ -191,10 +193,17 @@ CREATE TABLE `user_access_menu` (
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (1, 1, 1),
-(3, 2, 2),
-(12, 1, 5),
-(14, 1, 3),
-(15, 1, 2);
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 1, 5),
+(6, 2, 1),
+(7, 2, 2),
+(8, 2, 3),
+(9, 2, 4),
+(10, 3, 1),
+(11, 3, 2),
+(12, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -213,9 +222,10 @@ CREATE TABLE `user_menu` (
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Admin'),
-(2, 'User'),
-(3, 'Menu'),
-(5, 'Test');
+(2, 'Data'),
+(3, 'Profile'),
+(4, 'Menu'),
+(5, 'User');
 
 -- --------------------------------------------------------
 
@@ -233,8 +243,9 @@ CREATE TABLE `user_role` (
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
-(1, 'Administrator'),
-(2, 'Member');
+(1, 'Super Admin'),
+(2, 'Admin'),
+(3, 'Member');
 
 -- --------------------------------------------------------
 
@@ -257,12 +268,16 @@ CREATE TABLE `user_sub_menu` (
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
-(2, 2, 'My Profile', 'user', 'fas fa-fw fa-user', 1),
-(3, 2, 'Edit Profile', 'user/edit', 'fas fa-fw fa-user-edit', 1),
-(4, 3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
-(5, 3, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
-(7, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1),
-(8, 2, 'Change Password', 'user/changepassword', 'fas fa-fw fa-key', 1);
+(2, 3, 'Profil', 'profile', 'fas fa-fw fa-user', 1),
+(3, 3, 'Ubah Profil', 'profile/edit', 'fas fa-fw fa-user-edit', 1),
+(4, 4, 'Pengelolaan Menu', 'menu', 'fas fa-fw fa-folder', 1),
+(5, 4, 'Pengelolaan Submenu', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
+(7, 5, 'Daftar Pengguna', 'user', 'fas fa-fw fa-user-tie', 1),
+(8, 3, 'Ganti Password', 'profile/changepassword', 'fas fa-fw fa-key', 1),
+(9, 2, 'Data Pengunjung', 'data/pengunjung', 'fas fa-database', 1),
+(10, 5, 'Hak Akses', 'user/role', 'fas fa-user', 1),
+(11, 2, 'Data Lokasi', 'data/lokasi', 'fas fa-map-marked-alt', 1),
+(12, 2, 'Laporan', 'data/laporan', 'fas fa-file', 1);
 
 -- --------------------------------------------------------
 
@@ -276,17 +291,6 @@ CREATE TABLE `user_token` (
   `token` varchar(128) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `user_token`
---
-
-INSERT INTO `user_token` (`id`, `email`, `token`, `date_created`) VALUES
-(9, 'danixsofyan@gmail.com', 'pNEc19AE0AowB+cfsiAeckbdRHmkK0elnaoEPPSBlJQ=', 1563523827),
-(10, 'danixsofyan@gmail.com', 'y/HN6Zwvz/GBpPqQvE1HDpVlEvqqPgWsL5Px0oioE0c=', 1563765358),
-(11, 'danixsofyan@gmail.com', 'SJDrx4QPZ+dnfX2nkGHcVDlP+/GWxcKbM9ExQzCiAw4=', 1563766056),
-(12, 'danixsofyan@gmail.com', 'ZqnIJOJfft3hRtBtuBVk1UqO1dgvCffDQMSujQfpcnc=', 1563766629),
-(13, 'danixsofyan@gmail.com', '4oohwgQm01UIQAJxzcdytuN+SbOxBVI8NtWcn413/ko=', 1563766927);
 
 --
 -- Indexes for dumped tables
@@ -366,7 +370,7 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `data_pengunjung`
 --
 ALTER TABLE `data_pengunjung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -396,13 +400,13 @@ ALTER TABLE `sosmed`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
@@ -414,19 +418,19 @@ ALTER TABLE `user_menu`
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

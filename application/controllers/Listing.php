@@ -6,16 +6,16 @@ class Listing extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_home');
+        $this->load->model('home_model');
     }
 
     public function index()
     {
         $data['title'] = 'Tambah Tempat';
-        $this->load->view('templates/home_header', $data);
-        $this->load->view('templates/home_header_breadcrumb', $data);
+        $this->load->view('templates/home/header', $data);
+        $this->load->view('templates/home/breadcrumb', $data);
         $this->load->view('home/addlisting', $data);
-        $this->load->view('templates/home_footer', $data);
+        $this->load->view('templates/home/footer', $data);
     }
 
     public function add()
@@ -42,12 +42,12 @@ class Listing extends CI_Controller
     public function detail($id)
 	{
 		$data['title'] = 'Detil Tempat';
-		$data['list'] = $this->M_home->getListById($id);
-		$data['oprational'] = $this->M_home->oprational($id);
-		$this->load->view('templates/home_header', $data);
-		$this->load->view('templates/home_header_detil', $data);
+		$data['list'] = $this->home_model->getListById($id);
+		$data['oprational'] = $this->home_model->oprational($id);
+		$this->load->view('templates/home/header', $data);
+		$this->load->view('templates/home/header_detil', $data);
 		$this->load->view('home/detail', $data);
-		$this->load->view('templates/home_footer', $data);
+		$this->load->view('templates/home/footer', $data);
 	}
     
 }

@@ -5,7 +5,7 @@
                         <ul class="list-unstyled listing-info--meta">                            
                             <li>
                                 <div class="atbd_listing_category">
-                                    <a href=""><span class="la la-glass"></span><?= $list['nama_ktrg']; ?></a>
+                                    <a href=""><span class="la la-glass"></span><?= $list['name']; ?></a>
                                 </div>
                             </li>
                         </ul><!-- ends: .listing-info-meta -->
