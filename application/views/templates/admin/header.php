@@ -23,6 +23,9 @@
 
     <!-- Custom styles for this page -->
     <link href="<?= base_url('assets/admin/'); ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom list homepage -->
+    <link rel="stylesheet" href="<?= base_url('assets/home/'); ?>style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/home/'); ?>vendor_assets/css/line-awesome.min.css">
 
 </head>
 

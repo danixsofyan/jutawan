@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 06, 2019 at 06:55 PM
+-- Generation Time: Aug 09, 2019 at 02:34 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.7
 
@@ -30,19 +30,20 @@ CREATE TABLE `data_pengunjung` (
   `id` int(11) NOT NULL,
   `id_lokasi` int(11) NOT NULL,
   `date` date NOT NULL,
-  `jumlah` int(11) NOT NULL
+  `jumlah` int(11) NOT NULL,
+  `date_created` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `data_pengunjung`
 --
 
-INSERT INTO `data_pengunjung` (`id`, `id_lokasi`, `date`, `jumlah`) VALUES
-(1, 1, '2019-07-01', 1000),
-(2, 1, '2019-07-02', 200),
-(3, 3, '2019-07-16', 5000),
-(4, 1, '2019-08-02', 4000),
-(5, 2, '2019-08-01', 100);
+INSERT INTO `data_pengunjung` (`id`, `id_lokasi`, `date`, `jumlah`, `date_created`) VALUES
+(1, 1, '2019-06-01', 1000, '2019-06-01'),
+(2, 1, '2019-07-02', 200, '2019-07-02'),
+(3, 3, '2019-07-16', 5000, '2019-07-16'),
+(4, 1, '2019-08-02', 4000, '2019-08-02'),
+(5, 2, '2019-08-01', 100, '2019-08-01');
 
 -- --------------------------------------------------------
 
@@ -84,7 +85,6 @@ CREATE TABLE `lokasi` (
   `deskripsi` text NOT NULL,
   `tagline` varchar(128) NOT NULL,
   `tiket` int(11) NOT NULL,
-  `ket` varchar(512) NOT NULL,
   `alamat` varchar(128) NOT NULL,
   `no_tlp` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
@@ -100,10 +100,13 @@ CREATE TABLE `lokasi` (
 -- Dumping data for table `lokasi`
 --
 
-INSERT INTO `lokasi` (`id`, `nama_lks`, `kategori`, `deskripsi`, `tagline`, `tiket`, `ket`, `alamat`, `no_tlp`, `email`, `website`, `sosmed`, `oprational`, `photo`, `video`, `iduser`) VALUES
-(1, 'Museum Geologi Bandung', 1, 'Museum Geologi Bandung bla bla bla\r\n\r\nExcepteur sint occaecat cupidatat non proident, sunt in culpa kequi officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium dolorem que laudantium, totam rem aperiam the eaque ipsa quae abillo was inventore veritatis keret quasi aperiam architecto beatae vitae dicta sunt explicabo. Nemo ucxqui officia voluptatem accu santium doloremque laudantium, totam rem ape dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.', 'Kementerian ESDM | Badan Geologi', 5000, 'Ingin berwisata sambil belajar ilmu', 'Jl. Diponegoro No.57', '(022) 7213822', 'museum-geologi@grdc.esdm.go.id', 'http://museum.geology.esdm.go.id/', 1, 'Senin-Kamis 08:00-16:00\r\nSabtu-Minggu 08.00-14.00\r\nTiket Masuk Pelajar Rp.2000\r\nTiket masuk Wisatawan Asing Rp.10.000', 'p1.jpg', '-', 3),
-(2, 'Paris Van Java Mall', 2, 'Paris Van Java - Resort Lifestyle Place\r\nOne of a kind shopping centre in Asia which blends mediterranian architecture and lush greenery into a unique and memorable experience for all ages.\r\n \r\nRevel in an immersive shopping spree with world-renowned brands and creative entrepreneurs. Savour the tastes of the world while dining under the stars. Relish the beauty of nature in Paradiso and immortalize your visit enveloped by luscious flowers and exotic ambiance. Paris Van java - Resort Lifestyle Place bids you welcome for \"The Paris Van Java Experience\"\r\n', 'Resort Lifestyle Place', 0, 'pvj pvj pvj', 'Jl. Sukajadi No.131-139', '(022) 1234567', 'info@paris-van-java.com', 'http://www.parisvanjava.id/', 2, 'z', 'p2.jpg', '-', 3),
-(3, 'Saung Angklung Udjo', 4, 'Saung Angklung Udjo  merupakan sebuah tujuan wisata budaya dan edukasi yang lengkap, karena Saung Angklung Udjo memiliki arena pertunjukan, pusat kerajinan bambu dan workshop untuk alat musik bambu. Disamping itu, kehadiran Saung Angklung Udjo di Bandung menjadi lebih bermakna karena kepeduliannya untuk terus melestarikan dan mengembangkan kebudayaan Sunda – khususnya Angklung – kepada masyarakat melalui sarana pendidikan dan pelatihan.', 'Nature Culture in Harmony', 50000, 'angklung', 'Jl. Padasuka No.118', '(022) 7271714', 'info@angklung-udjo.co.id', 'https://angklungudjo.com/', 3, '1', 'p3.jpg', '-', 1);
+INSERT INTO `lokasi` (`id`, `nama_lks`, `kategori`, `deskripsi`, `tagline`, `tiket`, `alamat`, `no_tlp`, `email`, `website`, `sosmed`, `oprational`, `photo`, `video`, `iduser`) VALUES
+(1, 'Museum Geologi Bandung', 1, 'Museum Geologi Bandung bla bla bla\r\n\r\nExcepteur sint occaecat cupidatat non proident, sunt in culpa kequi officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium dolorem que laudantium, totam rem aperiam the eaque ipsa quae abillo was inventore veritatis keret quasi aperiam architecto beatae vitae dicta sunt explicabo. Nemo ucxqui officia voluptatem accu santium doloremque laudantium, totam rem ape dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.', 'Kementerian ESDM | Badan Geologi', 5000, 'Jl. Diponegoro No.57', '(022) 7213822', 'museum-geologi@grdc.esdm.go.id', 'http://museum.geology.esdm.go.id/', 1, 'Senin-Kamis 08:00-16:00\r\nSabtu-Minggu 08.00-14.00\r\nTiket Masuk Pelajar Rp.2000\r\nTiket masuk Wisatawan Asing Rp.10.000', 'p1.jpg', '-', 3),
+(2, 'Paris Van Java Mall', 2, 'Paris Van Java - Resort Lifestyle Place\r\nOne of a kind shopping centre in Asia which blends mediterranian architecture and lush greenery into a unique and memorable experience for all ages.\r\n \r\nRevel in an immersive shopping spree with world-renowned brands and creative entrepreneurs. Savour the tastes of the world while dining under the stars. Relish the beauty of nature in Paradiso and immortalize your visit enveloped by luscious flowers and exotic ambiance. Paris Van java - Resort Lifestyle Place bids you welcome for \"The Paris Van Java Experience\"\r\n', 'Resort Lifestyle Place', 0, 'Jl. Sukajadi No.131-139', '(022) 1234567', 'info@paris-van-java.com', 'http://www.parisvanjava.id/', 2, 'z', 'p2.jpg', '-', 1),
+(3, 'Saung Angklung Udjo', 4, 'Saung Angklung Udjo  merupakan sebuah tujuan wisata budaya dan edukasi yang lengkap, karena Saung Angklung Udjo memiliki arena pertunjukan, pusat kerajinan bambu dan workshop untuk alat musik bambu. Disamping itu, kehadiran Saung Angklung Udjo di Bandung menjadi lebih bermakna karena kepeduliannya untuk terus melestarikan dan mengembangkan kebudayaan Sunda – khususnya Angklung – kepada masyarakat melalui sarana pendidikan dan pelatihan.', 'Nature Culture in Harmony', 50000, 'Jl. Padasuka No.118', '(022) 7271714', 'info@angklung-udjo.co.id', 'https://angklungudjo.com/', 3, '1', 'p3.jpg', '-', 3),
+(4, 'dani', 2, 'asdasdas', 'asd', 12312312, 'asdasdasdas', '23423423', 'seruinterus@gmail.com', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 4, '1', 'p2.jpg', '1', 3),
+(5, 'Coba', 8, 'Coba', 'Coba', 123, 'Coba', '1234', 'digdayaco@gmail.com', 'https://facebook.com', 5, '1', 'p1.jpg', '1', 3),
+(6, 'tes', 1, 'tes', 'tes', 1231231, 'tes', '12312', 'seruinterus@gmail.com', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 6, '1', 'p1.jpg', '1', 3);
 
 -- --------------------------------------------------------
 
@@ -147,7 +150,10 @@ CREATE TABLE `sosmed` (
 INSERT INTO `sosmed` (`id`, `facebook`, `instagram`, `twitter`) VALUES
 (1, 'https://www.facebook.com/groups/60256428517/', 'https://www.instagram.com/geomuzee/', 'https://twitter.com/geomuzee'),
 (2, 'https://www.facebook.com/officialpvj', 'https://www.instagram.com/pvjofficial/', 'https://twitter.com/PVJbandung'),
-(3, 'https://www.facebook.com/saungangklungudjo/', 'https://www.instagram.com/angklungudjo/', 'https://twitter.com/angklungudjo');
+(3, 'https://www.facebook.com/saungangklungudjo/', 'https://www.instagram.com/angklungudjo/', 'https://twitter.com/angklungudjo'),
+(4, 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0'),
+(5, 'https://facebook.com', 'https://facebook.com', 'https://facebook.com'),
+(6, 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 'https://facebook.com');
 
 -- --------------------------------------------------------
 
@@ -382,7 +388,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `lokasi`
 --
 ALTER TABLE `lokasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `oprational`
@@ -394,7 +400,7 @@ ALTER TABLE `oprational`
 -- AUTO_INCREMENT for table `sosmed`
 --
 ALTER TABLE `sosmed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
