@@ -2,6 +2,7 @@
         <div class="container">
             <div class="row">
                 <div class="listing-cards-wrapper col-lg-12">
+                <?= $this->session->flashdata('message'); ?>
                 <a href="<?= base_url('data/tambahlokasi'); ?>" class="btn btn-primary mb-3">Tambah Lokasi</a>
                     <div class="row">
                         <?php foreach ($list as $l) : ?>
@@ -11,7 +12,7 @@
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
                                             <a href="<?= base_url(); ?>listing/detail/<?= $l['id']; ?>">
-                                                <img src="<?= base_url('assets/home/'); ?>img/<?= $l['photo']; ?>" alt="listing image">
+                                                <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $l['photo']; ?>" alt="listing image">
                                             </a>
                                         </div><!-- ends: .atbd_listing_image -->
                                         <!-- <div class="atbd_author atbd_author--thumb">
@@ -52,7 +53,7 @@
                                                 </div>
                                             </div>
                                             <ul class="atbd_content_right">
-                                                <a href="<?= base_url(); ?>listing/detail/<?= $l['id']; ?>" class="badge badge-success text-white"><i class="far fa-edit"></i> Ubah</a>
+                                                <a href="<?= base_url(); ?>data/ubahlokasi/<?= $l['id']; ?>" class="badge badge-success text-white"><i class="far fa-edit"></i> Ubah</a>
                                             </ul>
                                         </div><!-- end .atbd_listing_bottom_content -->
                                     </div><!-- ends: .atbd_listing_info -->

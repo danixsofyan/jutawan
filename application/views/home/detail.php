@@ -40,19 +40,19 @@
                             <div class="gallery-wrapper">
                                 <div class="gallery-images">
                                     <div class="single-image">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-image">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-image">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-image">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-image">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-image">
                                         <img src="img/g1.jpg" alt="">
@@ -60,22 +60,22 @@
                                 </div><!-- ends: .gallery-images -->
                                 <div class="gallery-thumbs">
                                     <div class="single-thumb">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-thumb">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-thumb">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-thumb">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-thumb">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                     <div class="single-thumb">
-                                        <img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt="">
+                                        <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt="">
                                     </div>
                                 </div><!-- ends: .gallery-thumbs -->
                             </div><!-- ends: .gallery-wrapper -->
@@ -118,20 +118,18 @@
                     <div class="widget atbd_widget widget-card">
                         <div class="atbd_widget_title">
                             <h4><span class="la la-clock-o"></span> Oprational</h4>
-                            <span class="badge badge-success">Buka</span>
                         </div><!-- ends: .atbd_widget_title -->
-                        <?php foreach ($oprational as $o) : ?>
                         <div class="directory_open_hours">
                             <ul>
                                 <li class="atbd_open">
-                                    <span class="day"><?= $o['hari']; ?></span>
+                                    <?= $list['oprational']; ?>
+                                    <!-- <span class="day">zzz</span>
                                     <div class="atbd_open_close_time">
-                                        <span class="time"><?= $o['jambuka']; ?></span> - <span class="time"><?= $o['jamtutup']; ?></span>
-                                    </div>
+                                        <span class="time">zz</span> - <span class="time">zz</span>
+                                    </div> -->
                                 </li>                                
                             </ul>
                         </div>
-                        <?php endforeach; ?>
                     </div><!-- ends: .widget -->                    
                 </div>
             </div>

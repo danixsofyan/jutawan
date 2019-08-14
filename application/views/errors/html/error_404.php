@@ -56,7 +56,7 @@ p {
 </head>
 <body>
   <div id="container">
-    <img src="/bandung/assets/error/img/404_icon.png">
+    <img src="/jutawan/assets/error/img/404_icon.png">
     <h1><?php echo $heading; ?></h1>
     <p><?php echo $message; ?><a href="/jutawan/">Return Home</a></p>
   </div>

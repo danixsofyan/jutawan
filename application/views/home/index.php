@@ -241,7 +241,7 @@
                                     <figure class="atbd_listing_thumbnail_area">
                                         <div class="atbd_listing_image">
                                             <a href="<?= base_url(); ?>listing/detail/<?= $l['id']; ?>">
-                                                <img src="<?= base_url('assets/home/'); ?>img/<?= $l['photo']; ?>" alt="listing image">
+                                                <img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $l['photo']; ?>" alt="listing image">
                                             </a>
                                         </div><!-- ends: .atbd_listing_image -->
                                         <!-- <div class="atbd_author atbd_author--thumb">

@@ -43,7 +43,7 @@ class Listing extends CI_Controller
 	{
 		$data['title'] = 'Detil Tempat';
 		$data['list'] = $this->home_model->getListById($id);
-		$data['oprational'] = $this->home_model->oprational($id);
+		// $data['oprational'] = $this->home_model->oprational($id);
 		$this->load->view('templates/home/header', $data);
 		$this->load->view('templates/home/header_detil', $data);
 		$this->load->view('home/detail', $data);

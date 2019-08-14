@@ -1,5 +1,5 @@
 <section class="listing-details-wrapper bgimage">
-<div class="bg_image_holder"><img src="<?= base_url('assets/home/'); ?>img/<?= $list['photo']; ?>" alt=""></div>
+<div class="bg_image_holder"><img src="<?= base_url('assets/admin/'); ?>img/cover/<?= $list['photo']; ?>" alt=""></div>
         <div class="mainmenu-wrapper">
             <div class="menu-area menu1 menu--light">
                 <div class="top-menu-area">

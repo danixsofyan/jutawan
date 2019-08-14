@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 09, 2019 at 02:34 AM
+-- Generation Time: Aug 14, 2019 at 04:46 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.7
 
@@ -44,6 +44,26 @@ INSERT INTO `data_pengunjung` (`id`, `id_lokasi`, `date`, `jumlah`, `date_create
 (3, 3, '2019-07-16', 5000, '2019-07-16'),
 (4, 1, '2019-08-02', 4000, '2019-08-02'),
 (5, 2, '2019-08-01', 100, '2019-08-01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galeri`
+--
+
+CREATE TABLE `galeri` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `photo` varchar(128) NOT NULL,
+  `id_lokasi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `galeri`
+--
+
+INSERT INTO `galeri` (`id`, `name`, `photo`, `id_lokasi`) VALUES
+(1, 'coba', 'default.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -102,33 +122,9 @@ CREATE TABLE `lokasi` (
 
 INSERT INTO `lokasi` (`id`, `nama_lks`, `kategori`, `deskripsi`, `tagline`, `tiket`, `alamat`, `no_tlp`, `email`, `website`, `sosmed`, `oprational`, `photo`, `video`, `iduser`) VALUES
 (1, 'Museum Geologi Bandung', 1, 'Museum Geologi Bandung bla bla bla\r\n\r\nExcepteur sint occaecat cupidatat non proident, sunt in culpa kequi officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusan tium dolorem que laudantium, totam rem aperiam the eaque ipsa quae abillo was inventore veritatis keret quasi aperiam architecto beatae vitae dicta sunt explicabo. Nemo ucxqui officia voluptatem accu santium doloremque laudantium, totam rem ape dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.', 'Kementerian ESDM | Badan Geologi', 5000, 'Jl. Diponegoro No.57', '(022) 7213822', 'museum-geologi@grdc.esdm.go.id', 'http://museum.geology.esdm.go.id/', 1, 'Senin-Kamis 08:00-16:00\r\nSabtu-Minggu 08.00-14.00\r\nTiket Masuk Pelajar Rp.2000\r\nTiket masuk Wisatawan Asing Rp.10.000', 'p1.jpg', '-', 3),
-(2, 'Paris Van Java Mall', 2, 'Paris Van Java - Resort Lifestyle Place\r\nOne of a kind shopping centre in Asia which blends mediterranian architecture and lush greenery into a unique and memorable experience for all ages.\r\n \r\nRevel in an immersive shopping spree with world-renowned brands and creative entrepreneurs. Savour the tastes of the world while dining under the stars. Relish the beauty of nature in Paradiso and immortalize your visit enveloped by luscious flowers and exotic ambiance. Paris Van java - Resort Lifestyle Place bids you welcome for \"The Paris Van Java Experience\"\r\n', 'Resort Lifestyle Place', 0, 'Jl. Sukajadi No.131-139', '(022) 1234567', 'info@paris-van-java.com', 'http://www.parisvanjava.id/', 2, 'z', 'p2.jpg', '-', 1),
-(3, 'Saung Angklung Udjo', 4, 'Saung Angklung Udjo  merupakan sebuah tujuan wisata budaya dan edukasi yang lengkap, karena Saung Angklung Udjo memiliki arena pertunjukan, pusat kerajinan bambu dan workshop untuk alat musik bambu. Disamping itu, kehadiran Saung Angklung Udjo di Bandung menjadi lebih bermakna karena kepeduliannya untuk terus melestarikan dan mengembangkan kebudayaan Sunda – khususnya Angklung – kepada masyarakat melalui sarana pendidikan dan pelatihan.', 'Nature Culture in Harmony', 50000, 'Jl. Padasuka No.118', '(022) 7271714', 'info@angklung-udjo.co.id', 'https://angklungudjo.com/', 3, '1', 'p3.jpg', '-', 3),
-(4, 'dani', 2, 'asdasdas', 'asd', 12312312, 'asdasdasdas', '23423423', 'seruinterus@gmail.com', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 4, '1', 'p2.jpg', '1', 3),
-(5, 'Coba', 8, 'Coba', 'Coba', 123, 'Coba', '1234', 'digdayaco@gmail.com', 'https://facebook.com', 5, '1', 'p1.jpg', '1', 3),
-(6, 'tes', 1, 'tes', 'tes', 1231231, 'tes', '12312', 'seruinterus@gmail.com', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 6, '1', 'p1.jpg', '1', 3);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `oprational`
---
-
-CREATE TABLE `oprational` (
-  `id` int(11) NOT NULL,
-  `hari` varchar(128) NOT NULL,
-  `jambuka` time NOT NULL,
-  `jamtutup` time NOT NULL,
-  `id_lokasi` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `oprational`
---
-
-INSERT INTO `oprational` (`id`, `hari`, `jambuka`, `jamtutup`, `id_lokasi`) VALUES
-(1, 'Senin', '09:00:00', '17:00:00', 1),
-(2, 'Selasa', '09:00:00', '17:00:00', 1);
+(2, 'Paris Van Java Mall', 2, 'Paris Van Java - Resort Lifestyle Place\r\nOne of a kind shopping centre in Asia which blends mediterranian architecture and lush greenery into a unique and memorable experience for all ages.\r\n \r\nRevel in an immersive shopping spree with world-renowned brands and creative entrepreneurs. Savour the tastes of the world while dining under the stars. Relish the beauty of nature in Paradiso and immortalize your visit enveloped by luscious flowers and exotic ambiance. Paris Van java - Resort Lifestyle Place bids you welcome for \"The Paris Van Java Experience\"\r\n', 'Resort Lifestyle Place', 0, 'Jl. Sukajadi No.131-139', '(022) 1234567', 'info@paris-van-java.com', 'http://www.parisvanjava.id/', 2, 'Senin-Kamis 08:00-16:00\r\nSabtu-Minggu 08.00-14.00\r\nTiket Masuk Pelajar Rp.2000\r\nTiket masuk Wisatawan Asing Rp.10.000', 'p2.jpg', '-', 1),
+(3, 'Saung Angklung Udjo', 4, 'Saung Angklung Udjo  merupakan sebuah tujuan wisata budaya dan edukasi yang lengkap, karena Saung Angklung Udjo memiliki arena pertunjukan, pusat kerajinan bambu dan workshop untuk alat musik bambu. Disamping itu, kehadiran Saung Angklung Udjo di Bandung menjadi lebih bermakna karena kepeduliannya untuk terus melestarikan dan mengembangkan kebudayaan Sunda – khususnya Angklung – kepada masyarakat melalui sarana pendidikan dan pelatihan.', 'Nature Culture in Harmony', 50000, 'Jl. Padasuka No.118', '(022) 7271714', 'info@angklung-udjo.co.id', 'https://angklungudjo.com/', 3, 'Senin-Kamis 08:00-16:00\r\nSabtu-Minggu 08.00-14.00\r\nTiket Masuk Pelajar Rp.2000\r\nTiket masuk Wisatawan Asing Rp.10.000', 'p3.jpg', '-', 3),
+(4, 'Dago', 5, 'Coba Input', 'Coba Input', 0, 'Coba Input', '123123', 'dago@bandung.go.id', 'https://www.instagram.com/digdaya.co/', 4, 'Coba Input', 'p4.jpg', 'null', 3);
 
 -- --------------------------------------------------------
 
@@ -151,9 +147,7 @@ INSERT INTO `sosmed` (`id`, `facebook`, `instagram`, `twitter`) VALUES
 (1, 'https://www.facebook.com/groups/60256428517/', 'https://www.instagram.com/geomuzee/', 'https://twitter.com/geomuzee'),
 (2, 'https://www.facebook.com/officialpvj', 'https://www.instagram.com/pvjofficial/', 'https://twitter.com/PVJbandung'),
 (3, 'https://www.facebook.com/saungangklungudjo/', 'https://www.instagram.com/angklungudjo/', 'https://twitter.com/angklungudjo'),
-(4, 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0'),
-(5, 'https://facebook.com', 'https://facebook.com', 'https://facebook.com'),
-(6, 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 'http://localhost/phpmyadmin/sql.php?db=jutawan&table=sosmed&pos=0', 'https://facebook.com');
+(4, 'http://localhost/phpmyadmin', 'http://localhost/phpmyadmin', 'http://localhost/phpmyadmin');
 
 -- --------------------------------------------------------
 
@@ -179,7 +173,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (1, 'Dani Sofyan', 'danixsofyan@gmail.com', 'profile.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 1, 1, 1563523827),
 (2, 'Disbudpar', 'jutawan@gmail.com', 'stunningbandung.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 2, 1, 1563523827),
-(3, 'Museum Geologi', 'museumgeologi@gmail.com', 'default.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 3, 1, 1563523827);
+(3, 'Museum Geologi', 'museumgeologi@gmail.com', 'default.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 3, 1, 1563523827),
+(4, 'Anugerah Dicky Pratama', 'anugerahdickypratama@gmail.com', 'default.jpg', '$2y$10$mRgjjv/AlvpNv4XXK6rxU.RY4Ec1okSEyfLzlAe924l.CdRsRTU22', 1, 1, 1563523827);
 
 -- --------------------------------------------------------
 
@@ -278,12 +273,12 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (3, 3, 'Ubah Profil', 'profile/edit', 'fas fa-fw fa-user-edit', 1),
 (4, 4, 'Pengelolaan Menu', 'menu', 'fas fa-fw fa-folder', 1),
 (5, 4, 'Pengelolaan Submenu', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
-(7, 5, 'Daftar Pengguna', 'user', 'fas fa-fw fa-user-tie', 1),
-(8, 3, 'Ganti Password', 'profile/changepassword', 'fas fa-fw fa-key', 1),
-(9, 2, 'Data Pengunjung', 'data/pengunjung', 'fas fa-database', 1),
-(10, 5, 'Hak Akses', 'user/role', 'fas fa-user', 1),
-(11, 2, 'Data Lokasi', 'data/lokasi', 'fas fa-map-marked-alt', 1),
-(12, 2, 'Laporan', 'data/laporan', 'fas fa-file', 1);
+(6, 5, 'Daftar Pengguna', 'user', 'fas fa-fw fa-user-tie', 1),
+(7, 3, 'Ganti Password', 'profile/changepassword', 'fas fa-fw fa-key', 1),
+(8, 2, 'Data Pengunjung', 'data/pengunjung', 'fas fa-database', 1),
+(9, 5, 'Hak Akses', 'user/role', 'fas fa-user', 1),
+(10, 2, 'Data Lokasi', 'data/lokasi', 'fas fa-map-marked-alt', 1),
+(11, 2, 'Laporan', 'data/laporan', 'fas fa-file', 1);
 
 -- --------------------------------------------------------
 
@@ -309,6 +304,12 @@ ALTER TABLE `data_pengunjung`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `galeri`
+--
+ALTER TABLE `galeri`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -318,12 +319,6 @@ ALTER TABLE `kategori`
 -- Indexes for table `lokasi`
 --
 ALTER TABLE `lokasi`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `oprational`
---
-ALTER TABLE `oprational`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -379,6 +374,12 @@ ALTER TABLE `data_pengunjung`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `galeri`
+--
+ALTER TABLE `galeri`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -388,25 +389,19 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `lokasi`
 --
 ALTER TABLE `lokasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `oprational`
---
-ALTER TABLE `oprational`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sosmed`
 --
 ALTER TABLE `sosmed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
@@ -430,7 +425,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_token`

@@ -39,12 +39,29 @@ class Data_model extends CI_Model
     public function getListById($id)
     {
         // return $this->db->get_where('lokasi', ['id' => $id])->row_array();
-        return $this->db->query("SELECT * FROM lokasi JOIN sosmed ON sosmed.id = lokasi.sosmed JOIN kategori ON kategori.id = lokasi.kategori WHERE lokasi.id = $id")->row_array();
+        return $this->db->query("SELECT *, lokasi.id FROM lokasi JOIN sosmed ON sosmed.id = lokasi.sosmed JOIN kategori ON kategori.id = lokasi.kategori WHERE lokasi.id = $id")->row_array();
     }
 
     public function oprational($id)
     {
         return $this->db->query("SELECT * FROM oprational WHERE id_lokasi = $id")->result_array();
+    }
+
+    //edit
+    public function editLokasi($id, $data)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('lokasi', $data);;
+    }
+
+    public function editSosmed($idsosmed, $data)
+    {
+        $this->db->where('id', $idsosmed);
+        $this->db->update('sosmed', $data);;
+    }
+
+    public function setCover($new_image){
+        $this->db->set('photo', $new_image);
     }
     
     //add
