@@ -51,9 +51,12 @@
                             <option value="8">Kuliner</option>
                         </select>
                     </div>
-                    <div class="form-group mt-4">
+                    <!-- Cetak Excel -->
+                    <a oneclick="" class="btn btn-success mb-3 mt-3" href="<?= base_url('Data/cetakExcel'); ?>"><i class="fas fa-file-excel"></i> Export</a>
+                    </form>
+                    <!-- <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary listing_submit_btn"><i class="far fa-file-alt"></i>  Export</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

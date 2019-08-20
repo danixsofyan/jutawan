@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 14, 2019 at 04:46 AM
--- Server version: 5.7.26
--- PHP Version: 7.3.7
+-- Waktu pembuatan: 20 Agu 2019 pada 17.34
+-- Versi server: 5.7.26
+-- Versi PHP: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_pengunjung`
+-- Struktur dari tabel `data_pengunjung`
 --
 
 CREATE TABLE `data_pengunjung` (
@@ -31,24 +31,25 @@ CREATE TABLE `data_pengunjung` (
   `id_lokasi` int(11) NOT NULL,
   `date` date NOT NULL,
   `jumlah` int(11) NOT NULL,
-  `date_created` date DEFAULT NULL
+  `date_created` date DEFAULT NULL,
+  `date_update` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `data_pengunjung`
+-- Dumping data untuk tabel `data_pengunjung`
 --
 
-INSERT INTO `data_pengunjung` (`id`, `id_lokasi`, `date`, `jumlah`, `date_created`) VALUES
-(1, 1, '2019-06-01', 1000, '2019-06-01'),
-(2, 1, '2019-07-02', 200, '2019-07-02'),
-(3, 3, '2019-07-16', 5000, '2019-07-16'),
-(4, 1, '2019-08-02', 4000, '2019-08-02'),
-(5, 2, '2019-08-01', 100, '2019-08-01');
+INSERT INTO `data_pengunjung` (`id`, `id_lokasi`, `date`, `jumlah`, `date_created`, `date_update`) VALUES
+(1, 1, '2019-01-01', 10009, '2019-08-20', '2019-08-20'),
+(2, 1, '2019-02-01', 1000, '2019-08-20', '2019-08-20'),
+(3, 1, '2019-03-01', 1001, '2019-08-20', '2019-08-20'),
+(4, 1, '2019-04-01', 99999, '2019-08-20', '2019-08-21'),
+(6, 3, '2019-08-01', 1000, '2019-08-20', '2019-08-20');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galeri`
+-- Struktur dari tabel `galeri`
 --
 
 CREATE TABLE `galeri` (
@@ -59,7 +60,7 @@ CREATE TABLE `galeri` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `galeri`
+-- Dumping data untuk tabel `galeri`
 --
 
 INSERT INTO `galeri` (`id`, `name`, `photo`, `id_lokasi`) VALUES
@@ -68,7 +69,7 @@ INSERT INTO `galeri` (`id`, `name`, `photo`, `id_lokasi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -79,7 +80,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`id`, `name`, `icon`, `is_active`) VALUES
@@ -95,7 +96,7 @@ INSERT INTO `kategori` (`id`, `name`, `icon`, `is_active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lokasi`
+-- Struktur dari tabel `lokasi`
 --
 
 CREATE TABLE `lokasi` (
@@ -117,7 +118,7 @@ CREATE TABLE `lokasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `lokasi`
+-- Dumping data untuk tabel `lokasi`
 --
 
 INSERT INTO `lokasi` (`id`, `nama_lks`, `kategori`, `deskripsi`, `tagline`, `tiket`, `alamat`, `no_tlp`, `email`, `website`, `sosmed`, `oprational`, `photo`, `video`, `iduser`) VALUES
@@ -129,7 +130,7 @@ INSERT INTO `lokasi` (`id`, `nama_lks`, `kategori`, `deskripsi`, `tagline`, `tik
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sosmed`
+-- Struktur dari tabel `sosmed`
 --
 
 CREATE TABLE `sosmed` (
@@ -140,7 +141,7 @@ CREATE TABLE `sosmed` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sosmed`
+-- Dumping data untuk tabel `sosmed`
 --
 
 INSERT INTO `sosmed` (`id`, `facebook`, `instagram`, `twitter`) VALUES
@@ -152,7 +153,7 @@ INSERT INTO `sosmed` (`id`, `facebook`, `instagram`, `twitter`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -167,7 +168,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
@@ -179,7 +180,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_access_menu`
+-- Struktur dari tabel `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -189,7 +190,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user_access_menu`
+-- Dumping data untuk tabel `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -209,7 +210,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_menu`
+-- Struktur dari tabel `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -218,7 +219,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user_menu`
+-- Dumping data untuk tabel `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
@@ -231,7 +232,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_role`
+-- Struktur dari tabel `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -240,7 +241,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data untuk tabel `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -251,7 +252,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_sub_menu`
+-- Struktur dari tabel `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -264,7 +265,7 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user_sub_menu`
+-- Dumping data untuk tabel `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
@@ -275,7 +276,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (5, 4, 'Pengelolaan Submenu', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
 (6, 5, 'Daftar Pengguna', 'user', 'fas fa-fw fa-user-tie', 1),
 (7, 3, 'Ganti Password', 'profile/changepassword', 'fas fa-fw fa-key', 1),
-(8, 2, 'Data Pengunjung', 'data/pengunjung', 'fas fa-database', 1),
+(8, 2, 'Data Pengunjung', 'data', 'fas fa-database', 1),
 (9, 5, 'Hak Akses', 'user/role', 'fas fa-user', 1),
 (10, 2, 'Data Lokasi', 'data/lokasi', 'fas fa-map-marked-alt', 1),
 (11, 2, 'Laporan', 'data/laporan', 'fas fa-file', 1);
@@ -283,7 +284,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_token`
+-- Struktur dari tabel `user_token`
 --
 
 CREATE TABLE `user_token` (
@@ -298,137 +299,137 @@ CREATE TABLE `user_token` (
 --
 
 --
--- Indexes for table `data_pengunjung`
+-- Indeks untuk tabel `data_pengunjung`
 --
 ALTER TABLE `data_pengunjung`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `galeri`
+-- Indeks untuk tabel `galeri`
 --
 ALTER TABLE `galeri`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kategori`
+-- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `lokasi`
+-- Indeks untuk tabel `lokasi`
 --
 ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sosmed`
+-- Indeks untuk tabel `sosmed`
 --
 ALTER TABLE `sosmed`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_access_menu`
+-- Indeks untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_menu`
+-- Indeks untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_role`
+-- Indeks untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_sub_menu`
+-- Indeks untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_token`
+-- Indeks untuk tabel `user_token`
 --
 ALTER TABLE `user_token`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `data_pengunjung`
+-- AUTO_INCREMENT untuk tabel `data_pengunjung`
 --
 ALTER TABLE `data_pengunjung`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `galeri`
+-- AUTO_INCREMENT untuk tabel `galeri`
 --
 ALTER TABLE `galeri`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `kategori`
+-- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `lokasi`
+-- AUTO_INCREMENT untuk tabel `lokasi`
 --
 ALTER TABLE `lokasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `sosmed`
+-- AUTO_INCREMENT untuk tabel `sosmed`
 --
 ALTER TABLE `sosmed`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user_access_menu`
+-- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `user_menu`
+-- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `user_role`
+-- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user_sub_menu`
+-- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `user_token`
+-- AUTO_INCREMENT untuk tabel `user_token`
 --
 ALTER TABLE `user_token`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

@@ -30,7 +30,15 @@ class Admin_model extends CI_Model
 	
 	public function getChart($id)
     {
-        return $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah, id_lokasi, iduser FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi WHERE lokasi.iduser = $id
-        group by year(date), month(date), id_lokasi")->result_array();
+        $query = $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah, id_lokasi, iduser FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi WHERE lokasi.iduser = $id
+        group by year(date), month(date), id_lokasi");
+
+        if($query->num_rows() > 0){
+            foreach($query->result() as $data){
+                $hasil[] = $data;
+            }
+            return $hasil;
+        }
     }
+
 }

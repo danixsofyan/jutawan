@@ -14,10 +14,41 @@ class Data extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Menu Management';
+        $data['title']      = 'Data Pengunjung';
+        $email              = $this->session->userdata('email');        
+        $data['user']       = $this->Admin_model->getUser($email);
+        $role               = $this->session->userdata('role_id');
+        $id                 = $this->session->userdata('id');
+        $data['pengunjung'] = $this->Data_model->getPengunjung($id);
+        $data['lokasi']   = $this->Data_model->getLokasiByUser($id);
+
+        $this->form_validation->set_rules('jumlah', 'jumlah', 'required|is_natural_no_zero');
+        $this->form_validation->set_rules('datepicker', 'datepicker', 'required');
+        $this->form_validation->set_rules('id_lokasi', 'lokasi', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/admin/header', $data);
+            $this->load->view('templates/admin/sidebar', $data);
+            $this->load->view('templates/admin/topbar', $data);
+            $this->load->view('admin/data/pengunjung', $data);
+            $this->load->view('templates/admin/footer');
+        } else {
+            $pengunjung = [
+               // 'id_lokasi'     => $this->session->userdata('id'),
+                'id_lokasi'     => $this->input->post('id_lokasi'),
+                'date'          => $this->input->post('datepicker'),
+                'jumlah'        => $this->input->post('jumlah'),
+                'date_created'  => date("Y-m-d"),
+                'date_update'  => date("Y-m-d")
+            ];
+
+            $this->Data_model->addPengunjung($pengunjung);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pengunjung berhasil Ditambahkan</div>');
+            redirect('data');            
+        }
     }
 
-    public function pengunjung()
+    public function editPengunjung()
     {
         $data['title']      = 'Data Pengunjung';
         $email              = $this->session->userdata('email');        
@@ -25,12 +56,37 @@ class Data extends CI_Controller
         $role               = $this->session->userdata('role_id');
         $id                 = $this->session->userdata('id');
         $data['pengunjung'] = $this->Data_model->getPengunjung($id);
+        $data['lokasi']   = $this->Data_model->getLokasiByUser($id);
 
-        $this->load->view('templates/admin/header', $data);
-        $this->load->view('templates/admin/sidebar', $data);
-        $this->load->view('templates/admin/topbar', $data);
-        $this->load->view('admin/data/pengunjung', $data);
-        $this->load->view('templates/admin/footer');
+        $this->form_validation->set_rules('jumlah', 'jumlah', 'required|is_natural_no_zero');
+        $this->form_validation->set_rules('editdatepicker', 'editdatepicker', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/admin/header', $data);
+            $this->load->view('templates/admin/sidebar', $data);
+            $this->load->view('templates/admin/topbar', $data);
+            $this->load->view('admin/data/pengunjung', $data);
+            $this->load->view('templates/admin/footer');
+        } else {
+            $pengunjung = [
+                'date'          => $this->input->post('editdatepicker'),
+                'jumlah'        => $this->input->post('jumlah'),
+                'date_created'  => $this->input->post('date_created'),
+                'date_update'  => date("Y-m-d")
+            ];
+
+            $id_pengunjung   = $this->input->post('id');
+            $this->Data_model->editPengunjung($id_pengunjung, $pengunjung);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil diubah!</div>');
+            redirect('data');
+        }
+    }
+
+    public function deletePengunjung($id)
+    {
+        $this->Data_model->deletePengunjung($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil dihapus!</div>');
+        redirect('data');
     }
 
     public function lokasi()
@@ -217,6 +273,20 @@ class Data extends CI_Controller
         $this->load->view('templates/admin/topbar', $data);
         $this->load->view('admin/data/laporan', $data);
         $this->load->view('templates/admin/footer');
+    }
+
+    public function cetakExcel(){
+        $email              = $this->session->userdata('email');        
+        $data['user']       = $this->Admin_model->getUser($email);
+        $role               = $this->session->userdata('role_id');
+        $id                 = $this->session->userdata('id');
+        $data['pengunjung'] = $this->Data_model->getPengunjung($id);
+        $data['totalpengunjung'] = $this->Data_model->getTotalPengunjung();
+        $data['lokasi']     = $this->Data_model->getLokasiByUser($id);
+        $data['format']     = $this->input->post('format');
+        
+        
+        $this->load->view('admin/data/cetak_datakunjungan', $data);
     }
 
 }

@@ -21,11 +21,18 @@
     <!-- Custom styles for this template -->
     <link href="<?= base_url('assets/admin/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <link href="<?= base_url('assets/admin/'); ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Data Tables -->
+    <link href="<?= base_url('assets/admin/vendor/datatables/'); ?>dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/admin/vendor/datatables/'); ?>buttons.bootstrap4.min.css" rel="stylesheet">
+    
     <!-- Custom list homepage -->
     <link rel="stylesheet" href="<?= base_url('assets/home/'); ?>style.css">
     <link rel="stylesheet" href="<?= base_url('assets/home/'); ?>vendor_assets/css/line-awesome.min.css">
+
+    <!-- Date time picker -->
+    <script src="<?= base_url('assets/admin/vendor/datepicker/'); ?>jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/admin/vendor/datepicker/'); ?>bootstrap-datepicker.min.css" />
+    <script src="<?= base_url('assets/admin/vendor/datepicker/'); ?>bootstrap-datepicker.min.js"></script>
 
 </head>
 

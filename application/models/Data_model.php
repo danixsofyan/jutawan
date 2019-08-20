@@ -32,8 +32,22 @@ class Data_model extends CI_Model
 
     public function getPengunjung($id)
     {
-        return $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah, id_lokasi, iduser, lokasi.nama_lks, date_created, data_pengunjung.id FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi WHERE lokasi.iduser = $id
+        return $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah, id_lokasi, iduser, lokasi.nama_lks, date, date_created, date_update, data_pengunjung.id FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi WHERE lokasi.iduser = $id
         group by year(date), month(date), id_lokasi, date_created, data_pengunjung.id")->result_array();
+    }
+
+    public function getLokasiByUser($id)
+    {
+        $query = "SELECT *
+                  FROM `lokasi`
+                  WHERE `iduser` = '$id'
+                ";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function getTotalPengunjung()
+    {
+        return $this->db->query("SELECT SUM(jumlah) as jumlah_pengunjung FROM data_pengunjung")->result_array();
     }
 
     public function getListById($id)
@@ -73,5 +87,22 @@ class Data_model extends CI_Model
     public function addSosmed($sosmed)
     {
         $this->db->insert('sosmed', $sosmed);
+    }
+
+    public function addPengunjung($pengunjung)
+    {
+        $this->db->insert('data_pengunjung', $pengunjung);
+    }
+
+    //edit
+    public function editPengunjung($id_pengunjung, $pengunjung)
+    {
+        $this->db->where('id', $id_pengunjung);
+        $this->db->update('data_pengunjung', $pengunjung);
+    }
+
+    //delete
+    public function deletePengunjung($id){
+        $this->db->delete('data_pengunjung', ['id' => $id]);
     }
 }
