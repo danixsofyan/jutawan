@@ -19,22 +19,39 @@ class Data extends CI_Controller
         $data['user']       = $this->Admin_model->getUser($email);
         $role               = $this->session->userdata('role_id');
         $id                 = $this->session->userdata('id');
-        $data['pengunjung'] = $this->Data_model->getPengunjung($id);
-        $data['lokasi']   = $this->Data_model->getLokasiByUser($id);
 
         $this->form_validation->set_rules('jumlah', 'jumlah', 'required|is_natural_no_zero');
         $this->form_validation->set_rules('datepicker', 'datepicker', 'required');
         $this->form_validation->set_rules('id_lokasi', 'lokasi', 'required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('templates/admin/header', $data);
-            $this->load->view('templates/admin/sidebar', $data);
-            $this->load->view('templates/admin/topbar', $data);
-            $this->load->view('admin/data/pengunjung', $data);
-            $this->load->view('templates/admin/footer');
+            if ($role == 1) {
+                $data['pengunjung'] = $this->Data_model->getAllPengunjung();
+                $data['lokasi']     = $this->Data_model->getAllLokasi();
+                $this->load->view('templates/admin/header', $data);
+                $this->load->view('templates/admin/sidebar', $data);
+                $this->load->view('templates/admin/topbar', $data);
+                $this->load->view('admin/data/pengunjung_admin', $data);
+                $this->load->view('templates/admin/footer');
+            } else if ($role == 2) {
+                $this->load->view('templates/admin/header', $data);
+                $this->load->view('templates/admin/sidebar', $data);
+                $this->load->view('templates/admin/topbar', $data);
+                $this->load->view('admin/data/pengunjung', $data);
+                $this->load->view('templates/admin/footer');
+            } else {
+                $data['pengunjung'] = $this->Data_model->getPengunjung($id);
+                $data['lokasi']     = $this->Data_model->getLokasiByUser($id);
+                $this->load->view('templates/admin/header', $data);
+                $this->load->view('templates/admin/sidebar', $data);
+                $this->load->view('templates/admin/topbar', $data);
+                $this->load->view('admin/data/pengunjung', $data);
+                $this->load->view('templates/admin/footer');
+            }
+            
         } else {
             $pengunjung = [
-               // 'id_lokasi'     => $this->session->userdata('id'),
+            // 'id_lokasi'     => $this->session->userdata('id'),
                 'id_lokasi'     => $this->input->post('id_lokasi'),
                 'date'          => $this->input->post('datepicker'),
                 'jumlah'        => $this->input->post('jumlah'),
@@ -44,7 +61,7 @@ class Data extends CI_Controller
 
             $this->Data_model->addPengunjung($pengunjung);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pengunjung berhasil Ditambahkan</div>');
-            redirect('data');            
+            redirect('data');
         }
     }
 
@@ -98,10 +115,12 @@ class Data extends CI_Controller
         $id             = $this->session->userdata('id');
 
         if ($role == 1) {
+            $data['lokasi']   = $this->Data_model->getAllLokasiUser();
+
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
-            $this->load->view('admin/index', $data);
+            $this->load->view('admin/data/lokasi', $data);
             $this->load->view('templates/admin/footer');
         } else if ($role == 2) {
             $this->load->view('templates/admin/header', $data);

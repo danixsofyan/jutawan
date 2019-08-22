@@ -129,4 +129,53 @@ class Menu extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil dihapus!</div>');
         redirect('menu/submenu');
     }
+
+    public function kategori()
+    {
+        $data['title']      = 'Kategori';
+        $email              = $this->session->userdata('email');        
+        $data['user']       = $this->Admin_model->getUser($email);
+        $data['kategori']   = $this->Menu_model->getKategori();
+
+        $this->form_validation->set_rules('kategori', 'Kategori', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/admin/header', $data);
+            $this->load->view('templates/admin/sidebar', $data);
+            $this->load->view('templates/admin/topbar', $data);
+            $this->load->view('admin/menu/kategori', $data);
+            $this->load->view('templates/admin/footer');
+        } else {
+            $kategori = $this->input->post('kategori');
+            $this->Menu_model->addKategori($kategori);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Kategori berhasil ditambahkan!</div>');
+            redirect('menu/kategori');
+        }
+    }
+
+    public function editKategori()
+    {
+        $this->form_validation->set_rules('kategori', 'Kategori', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/admin/header', $data);
+            $this->load->view('templates/admin/sidebar', $data);
+            $this->load->view('templates/admin/topbar', $data);
+            $this->load->view('admin/menu/index', $data);
+            $this->load->view('templates/admin/footer');
+        } else {
+            $id   = $this->input->post('id');
+            $kategori = $this->input->post('kategori');
+            $this->Menu_model->editKategori($id, $kategori);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil diubah!</div>');
+            redirect('menu/kategori');
+        }
+    }
+
+    public function deleteKategori($id)
+    {
+        $this->Menu_model->deleteKategori($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil dihapus!</div>');
+        redirect('menu/kategori');
+    }
 }

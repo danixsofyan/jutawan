@@ -30,18 +30,31 @@ class Data_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function getAllPengunjung()
+    {
+        return $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah, id_lokasi, iduser, lokasi.nama_lks, date, date_created, date_update, data_pengunjung.id FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi
+        group by year(date), month(date), id_lokasi, date_created, data_pengunjung.id")->result_array();
+    }
+
     public function getPengunjung($id)
     {
         return $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah, id_lokasi, iduser, lokasi.nama_lks, date, date_created, date_update, data_pengunjung.id FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi WHERE lokasi.iduser = $id
         group by year(date), month(date), id_lokasi, date_created, data_pengunjung.id")->result_array();
     }
 
+    public function getAllLokasi()
+    {
+        return $this->db->get('lokasi')->result_array();
+    }
+
+    public function getAllLokasiUser()
+    {
+        return $this->db->query("SELECT lokasi.id, nama_lks, user.name as name, SUM(jumlah) as total_pengunjung, MAX(date_update) as date_update FROM lokasi JOIN user ON lokasi.iduser = user.id JOIN data_pengunjung ON data_pengunjung.id_lokasi = lokasi.id GROUP BY lokasi.id")->result_array();
+    }
+
     public function getLokasiByUser($id)
     {
-        $query = "SELECT *
-                  FROM `lokasi`
-                  WHERE `iduser` = '$id'
-                ";
+        $query = "SELECT * FROM `lokasi` WHERE `iduser` = '$id'";
         return $this->db->query($query)->result_array();
     }
 
@@ -60,6 +73,7 @@ class Data_model extends CI_Model
     {
         return $this->db->query("SELECT * FROM oprational WHERE id_lokasi = $id")->result_array();
     }
+    
 
     //edit
     public function editLokasi($id, $data)

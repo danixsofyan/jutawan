@@ -29,10 +29,9 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                <?php foreach ($kunjungan as $p) : ?>
-                    <a href="<?= base_url('data/pengunjung'); ?>">
-                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Kunjungan Anda</div>
-                    </a>
+                <?php foreach ($kunjungan as $p) : ?>                    
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><a href="<?= base_url('data'); ?>">Kunjungan Anda</div>
+                    
                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $p['jumlah_kunjungan']; ?></div>
                 <?php endforeach; ?> 
                 </div>
@@ -41,7 +40,7 @@
                 </div>
                 </div>
             </div>
-            </div>            
+            </div></a>            
         </div>
 
         <!-- Earnings (Monthly) Card Example -->
@@ -50,10 +49,8 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                <?php foreach ($kelola_lokasi as $l) : ?>
-                    <a href="<?= base_url('data/lokasi'); ?>">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Lokasi yang dikelola</div>
-                    </a>
+                <?php foreach ($kelola_lokasi as $l) : ?>                    
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1"><a href="<?= base_url('data/lokasi'); ?>">Lokasi yang dikelola</div>
                     <div class="row no-gutters align-items-center">
                     <div class="col-auto">
                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $l['jumlah_lokasi']; ?></div>
@@ -64,7 +61,7 @@
                 <div class="col-auto">
                     <i class="fas fa-map-marker-alt fa-2x text-gray-300"></i>
                 </div>
-                </div>
+                </div></a>
             </div>
             </div>
         </div>
@@ -97,7 +94,7 @@
             <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Data Pengunjung <?= date('Y'); ?></h6>
+                <h6 class="m-0 font-weight-bold text-primary">Data Pengunjung <?= $user['name']; ?> <?= date('Y'); ?></h6>
                 <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>

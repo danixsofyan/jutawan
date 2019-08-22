@@ -19,17 +19,23 @@ class Admin extends CI_Controller
         $id             = $this->session->userdata('id');
 
         if ($role == 1) {
+            $data['pengunjung']     = $this->Admin_model->getTotalPengunjung();
+            $data['lokasi']         = $this->Admin_model->getTotalLokasi();
+            $data['pengguna']       = $this->Admin_model->getTotalPengguna();
+            $data['kategori']       = $this->Admin_model->getTotalKategori();
+            $data['chart']          = $this->Admin_model->getChartAll();
+            $data['ktgrchart']      = $this->Admin_model->getKategoriChart();
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/sidebar', $data);
             $this->load->view('templates/admin/topbar', $data);
             $this->load->view('admin/index', $data);
-            $this->load->view('templates/admin/footer');
+            $this->load->view('templates/admin/footer_dashboard');
         } else if ($role == 2) {
             $this->load->view('admin/index_admin', $data);
         } else {
             $data['pengunjung']     = $this->Admin_model->getTotalPengunjung();
             $data['kunjungan']      = $this->Admin_model->getTotalKunjungan($id);
-            $data['kelola_lokasi']  = $this->Admin_model->getTotalLokasi($id);
+            $data['kelola_lokasi']  = $this->Admin_model->getTotalLokasiKelola($id);
             $data['update']         = $this->Admin_model->getTerakhirUpdate($id);
             $data['chart']          = $this->Admin_model->getChart($id);
             $this->load->view('templates/admin/header', $data);

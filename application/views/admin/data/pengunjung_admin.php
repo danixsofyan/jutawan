@@ -40,7 +40,7 @@
         </tfoot> -->
         <tbody>
         <?php $i = 1; ?>
-        <?php foreach ($pengunjung as $p) : ?>
+        <?php foreach ($pengunjung as $p) : ?>        
             <tr>
             <th scope="row"><?= $i; ?></th>
             <td><?= $p['nama_lks']; ?></td>
@@ -52,6 +52,9 @@
                     break;
                     case $p['m'] == 2:
                         print "Februari";
+                    break;
+                    case $p['m'] == 1:
+                        print "Januari";
                     break;
                     case $p['m'] == 3:
                         print "Maret";
@@ -174,7 +177,7 @@
                         <label for="title" class="form-label">Bulan</label>
                         <div class="input-group mb-3">
                             <input type="hidden" class="form-control" id="date_created" name="date_created" value="<?= $p['date_created']; ?>">
-                            <input id="editdatepicker<?= $p['id']; ?>" name="editdatepicker" class="form-control" placeholder="Pilih Bulan" value="<?= $p['date']; ?>" required>
+                            <input id="editDatepicker" name="editdatepicker" class="form-control" placeholder="Pilih Bulan" value="<?= $p['date']; ?>" required>
                             <div class="input-group-append">
                                 <span class="input-group-text" id="basic-addon2"><i class="far fa-calendar-alt"></i></span>
                             </div>
@@ -188,17 +191,6 @@
             </div>
         </div>
     </div>
-    <script>
-        var endYear = new Date(new Date().getFullYear(), 11, 31);
-        $('#editdatepicker<?= $p['id']; ?>').datepicker({
-            format: 'yyyy/m/d',
-            endDate: endYear,
-            startView: 'months',
-            minViewMode: 'months',
-            maxViewMode: 'years',
-            autoclose: true
-        });
-    </script>
     <?php endforeach; ?>
 
     <script>
@@ -213,7 +205,17 @@
         });
     </script>
 
-    
+    <script>
+        var endYear = new Date(new Date().getFullYear(), 11, 31);
+        $('#editDatepicker').datepicker({
+            format: 'yyyy/m/d',
+            endDate: endYear,
+            startView: 'months',
+            minViewMode: 'months',
+            maxViewMode: 'years',
+            autoclose: true
+        });
+    </script>
 
     <script>
     $(document).ready(function() {

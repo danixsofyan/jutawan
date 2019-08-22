@@ -25,6 +25,7 @@ class Menu_model extends CI_Model
 	        ";
         return $this->db->query($query)->result_array();
     }
+
     public function getMenuAll()
     {
         return  $this->db->get('user_menu')->result_array();
@@ -39,6 +40,11 @@ class Menu_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function getKategori()
+    {
+        return  $this->db->get('kategori')->result_array();
+    }
+
     //add
     public function addMenu($menu)
     {
@@ -48,6 +54,11 @@ class Menu_model extends CI_Model
     public function addSubMenu($data)
     {
         $this->db->insert('user_sub_menu', $data);
+    }
+
+    public function addKategori($kategori)
+    {
+        $this->db->insert('kategori', ['name' => $kategori]);
     }
 
     //edit
@@ -61,7 +72,13 @@ class Menu_model extends CI_Model
     {
         $this->db->where('id', $id);
         $this->db->update('user_sub_menu', $data);
-	}
+    }
+    
+    public function editKategori($id, $kategori)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('kategori', ['name' => $kategori]);
+    }
 
     //delete
     public function deleteMenu($id){
@@ -70,6 +87,10 @@ class Menu_model extends CI_Model
     
 	public function deleteSubMenu($id){
 		$this->db->delete('user_sub_menu', ['id' => $id]);
+    }
+    
+    public function deleteKategori($id){
+		$this->db->delete('kategori', ['id' => $id]);
 	}
     
 }

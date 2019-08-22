@@ -25,13 +25,13 @@
                                                             <a href="<?= base_url(); ?>">Beranda</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">Data Pengunjung</a>
+                                                            <a href="https://tourism.bandung.go.id/">Tourism</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">Destinasi Wisata Populer</a>
+                                                            <a href="http://bcg.bandungtourism.id/">Bandung City Guide</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">Kontak</a>
+                                                            <a href="https://tourism.bandung.go.id/promosi/">Promosi</a>
                                                         </li>
                                                     </ul>
                                                 </div>
