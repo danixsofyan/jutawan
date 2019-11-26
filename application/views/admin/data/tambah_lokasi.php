@@ -3,6 +3,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
+                <?php if (validation_errors()) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= validation_errors(); ?>
+            </div>
+            <?php endif; ?>
+
+            <?= $this->session->flashdata('message'); ?>
                     <div class="atbd_content_module">
                         <div class="atbd_content_module__tittle_area">
                             <div class="atbd_area_title">

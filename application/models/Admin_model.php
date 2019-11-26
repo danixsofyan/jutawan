@@ -45,7 +45,7 @@ class Admin_model extends CI_Model
 	
 	public function getChart($id)
     {
-        $query = $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah, iduser FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi WHERE lokasi.iduser = $id
+        $query = $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah, iduser FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi WHERE year(date) = year(CURDATE()) AND lokasi.iduser = $id
         group by year(date), month(date)");
 
         if($query->num_rows() > 0){
@@ -58,7 +58,7 @@ class Admin_model extends CI_Model
 
     public function getChartAll()
     {
-        $query = $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi
+        $query = $this->db->query("SELECT year(date) as y, month(date) as m, sum(jumlah) as jumlah FROM data_pengunjung JOIN lokasi ON lokasi.id = data_pengunjung.id_lokasi WHERE year(date) = year(CURDATE())
         group by year(date), month(date)");
 
         if($query->num_rows() > 0){

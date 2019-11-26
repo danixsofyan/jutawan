@@ -24,6 +24,7 @@
             <th>No</th>
             <th>Nama Lokasi</th>
             <th>Laporan Bulan</th>
+            <th>Tahun</th>
             <th>Jumlah Pengunjung</th>
             <th>Tanggal upload</th>
             <th>Action</th>
@@ -89,6 +90,7 @@
                 };
             ?>
             </td>
+            <td><?= $p['y']; ?></td>
             <td><?= $p['jumlah']; ?></td>
             <td ><?= date_format(date_create($p['date_update']),"d-F-Y"); ?></td>
             <td>
@@ -177,7 +179,7 @@
                         <label for="title" class="form-label">Bulan</label>
                         <div class="input-group mb-3">
                             <input type="hidden" class="form-control" id="date_created" name="date_created" value="<?= $p['date_created']; ?>">
-                            <input id="editDatepicker" name="editdatepicker" class="form-control" placeholder="Pilih Bulan" value="<?= $p['date']; ?>" required>
+                            <input id="editdatepicker<?= $p['id']; ?>" name="editdatepicker" class="form-control" placeholder="Pilih Bulan" value="<?= $p['date']; ?>" required>
                             <div class="input-group-append">
                                 <span class="input-group-text" id="basic-addon2"><i class="far fa-calendar-alt"></i></span>
                             </div>
@@ -191,11 +193,9 @@
             </div>
         </div>
     </div>
-    <?php endforeach; ?>
-
     <script>
         var endYear = new Date(new Date().getFullYear(), 11, 31);
-        $('#datepicker').datepicker({
+        $('#editdatepicker<?= $p['id']; ?>').datepicker({
             format: 'yyyy/m/d',
             endDate: endYear,
             startView: 'months',
@@ -204,10 +204,11 @@
             autoclose: true
         });
     </script>
+    <?php endforeach; ?>
 
     <script>
         var endYear = new Date(new Date().getFullYear(), 11, 31);
-        $('#editDatepicker').datepicker({
+        $('#datepicker').datepicker({
             format: 'yyyy/m/d',
             endDate: endYear,
             startView: 'months',

@@ -24,6 +24,7 @@
             <th>No</th>
             <th>Nama Lokasi</th>
             <th>Laporan Bulan</th>
+            <th>Tahun</th>
             <th>Jumlah Pengunjung</th>
             <th>Tanggal upload</th>
             <th>Action</th>
@@ -86,6 +87,7 @@
                 };
             ?>
             </td>
+            <td><?= $p['y']; ?></td>
             <td><?= $p['jumlah']; ?></td>
             <td ><?= date_format(date_create($p['date_update']),"d-F-Y"); ?></td>
             <td>

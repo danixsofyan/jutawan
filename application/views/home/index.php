@@ -88,25 +88,25 @@
                         <div class="directory_home_category_area">
                             <ul class="categories">
                                 <li>
-                                    <a href="">
+                                    <a href="<?= base_url(); ?>home/listkuliner/">
                                         <span class="color-primary"><i class="la la-cutlery"></i></span>
                                         Wisata Kuliner
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="<?= base_url(); ?>home/listwisata/">
                                         <span class="color-success"><i class="la la-map-marker"></i></span>
                                         Wisata Destinasi
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="<?= base_url(); ?>home/listbelanja/">
                                         <span class="color-warning"><i class="la la-shopping-cart"></i></span>
                                         Wisata Belanja
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="<?= base_url(); ?>home/listmenginap/">
                                         <span class="color-danger"><i class="la la-bed"></i></span>
                                         Wisata Menginap
                                     </a>
@@ -138,7 +138,9 @@
                             <h5 class="card-title ">EDUKASI</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-info"><i class="la la-puzzle-piece text-white"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto text-white">23</a>
+                                <?php foreach ($homeadukasi as $h) : ?>
+                                <a href="<?= base_url(); ?>home/listedukasi/" class="link display-5 ml-auto text-white"><?= number_format($h['total'],0,',','.'); ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -149,7 +151,9 @@
                             <h5 class="card-title">BELANJA</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-purple"><i class="la la-shopping-cart text-white"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto text-white">169</a>
+                                <?php foreach ($homebelanja as $h) : ?>
+                                <a href="<?= base_url(); ?>home/listbelanja/" class="link display-5 ml-auto text-white"><?= number_format($h['total'],0,',','.'); ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -160,7 +164,9 @@
                             <h5 class="card-title">MENGINAP</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-primary"><i class="la la-bed text-white"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto text-white">311</a>
+                                <?php foreach ($homemenginap as $h) : ?>
+                                <a href="<?= base_url(); ?>home/listmenginap/" class="link display-5 ml-auto text-white"><?= number_format($h['total'],0,',','.'); ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -171,7 +177,9 @@
                             <h5 class="card-title">SENI BUDAYA</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-success"><i class="la la-music to text-white"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto text-white">117</a>
+                                <?php foreach ($homesenibudaya as $h) : ?>
+                                <a href="<?= base_url(); ?>home/listsenibudaya/" class="link display-5 ml-auto text-white"><?= number_format($h['total'],0,',','.'); ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -182,7 +190,9 @@
                             <h5 class="card-title ">WISATA</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-info"><i class="la la-map-marker text-white"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto text-white">23</a>
+                                <?php foreach ($homewisata as $h) : ?>
+                                <a href="<?= base_url(); ?>home/listwisata/" class="link display-5 ml-auto text-white"><?= number_format($h['total'],0,',','.'); ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -193,7 +203,9 @@
                             <h5 class="card-title">EKONOMI KREATIF</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-purple"><i class="la la-laptop text-white"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto text-white">169</a>
+                                <?php foreach ($homeekraf as $h) : ?>
+                                <a href="<?= base_url(); ?>home/listekraf/" class="link display-5 ml-auto text-white"><?= number_format($h['total'],0,',','.'); ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -204,7 +216,9 @@
                             <h5 class="card-title">TRANSPORTASI</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-primary"><i class="la la-plane text-white"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto text-white">311</a>
+                                <?php foreach ($hometransportasi as $h) : ?>
+                                <a href="<?= base_url(); ?>home/listtransportasi/" class="link display-5 ml-auto text-white"><?= number_format($h['total'],0,',','.'); ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -215,7 +229,9 @@
                             <h5 class="card-title">KULINER</h5>
                             <div class="d-flex m-t-30 m-b-20 no-block align-items-center">
                                 <span class="display-5 text-success"><i class="la la-cutlery text-white"></i></span>
-                                <a href="javscript:void(0)" class="link display-5 ml-auto text-white">117</a>
+                                <?php foreach ($homekuliner as $h) : ?>
+                                <a href="<?= base_url(); ?>home/listkuliner/" class="link display-5 ml-auto text-white"><?= number_format($h['total'],0,',','.'); ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -341,7 +357,7 @@
                             </ul><!-- ends: .feature-list-wrapper -->
                             <ul class="action-btns list-unstyled">
                                 <!-- <li><a href="" class="btn btn-success">See our Pricing</a></li> -->
-                                <li><a href="" class="btn btn-primary">Hubungi Kami</a></li>
+                                <!-- <li><a href="" class="btn btn-primary">Hubungi Kami</a></li> -->
                             </ul>
                         </div>
                     </div>

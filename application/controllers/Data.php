@@ -10,6 +10,7 @@ class Data extends CI_Controller
         $this->load->model('Admin_model');
         $this->load->model('Menu_model');
         $this->load->model('Data_model');
+        $this->load->model('Budpar_model');
     }
 
     public function index()
@@ -149,6 +150,7 @@ class Data extends CI_Controller
         $data['sosmed']     = $this->Data_model->getIdSosmed();
         
         $this->form_validation->set_rules('namalks', 'Nama Lokasi', 'required');
+        $this->form_validation->set_rules('photo', 'Photo', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/admin/header', $data);
@@ -294,18 +296,59 @@ class Data extends CI_Controller
         $this->load->view('templates/admin/footer');
     }
 
-    public function cetakExcel(){
+    public function cetakExcel()
+    {
+        $data['title']      = 'Data Pengunjung';
         $email              = $this->session->userdata('email');        
         $data['user']       = $this->Admin_model->getUser($email);
         $role               = $this->session->userdata('role_id');
         $id                 = $this->session->userdata('id');
-        $data['pengunjung'] = $this->Data_model->getPengunjung($id);
-        $data['totalpengunjung'] = $this->Data_model->getTotalPengunjung();
-        $data['lokasi']     = $this->Data_model->getLokasiByUser($id);
-        $data['format']     = $this->input->post('format');
-        
-        
-        $this->load->view('admin/data/cetak_datakunjungan', $data);
+        /*cetak*/
+
+        $taun = $this->input->post('tahun');
+        $bulan = $this->input->post('bulan');
+        $lokasi = $this->input->post('lokasi');
+
+
+        if ($taun == 0 AND $bulan == 0 AND $lokasi == 0) {
+            $data['pengunjung'] = $this->Data_model->getCetakSemuaPengunjung($id);
+        } else if ($taun == $taun AND $bulan == 0 AND $lokasi == 0) {
+            $data['pengunjung'] = $this->Data_model->getCetakTaunPengunjung($id, $taun);
+        } else if ($taun == 0 AND $bulan == $bulan AND $lokasi == 0) {
+            $data['pengunjung'] = $this->Data_model->getCetakBulanPengunjung($id, $bulan);
+        } else if ($taun == 0 AND $bulan == 0 AND $lokasi == $lokasi) {
+            $data['pengunjung'] = $this->Data_model->getCetakLokasiPengunjung($id, $lokasi);
+        } else if ($taun == $taun AND $bulan == $bulan AND $lokasi == 0) {
+            $data['pengunjung'] = $this->Data_model->getCetakTaunBulanPengunjung($id, $taun, $bulan);
+        } else if ($taun == $taun AND $bulan == 0 AND $lokasi == $lokasi) {
+            $data['pengunjung'] = $this->Data_model->getCetakTaunLokasiPengunjung($id, $taun, $lokasi);
+        } else if ($taun == 0 AND $bulan == $bulan AND $lokasi == $lokasi) {
+            $data['pengunjung'] = $this->Data_model->getCetakBulanLokasiPengunjung($id, $bulan, $lokasi);
+        } else if ($taun == $taun AND $bulan == $bulan AND $lokasi == $lokasi) {
+            $data['pengunjung'] = $this->Data_model->getCetakTaunBulanLokasiPengunjung($id, $taun, $bulan, $lokasi);
+        } 
+
+
+        if ($taun == 0 AND $bulan == 0 AND $lokasi == 0) {
+            $data['totalpengunjungbu'] = $this->Data_model->getTotalSemuaPengunjung($id);
+        } else if ($taun == $taun AND $bulan == 0 AND $lokasi == 0) {
+            $data['totalpengunjungbu'] = $this->Data_model->getTotalTaunPengunjung($id, $taun);
+        } else if ($taun == 0 AND $bulan == $bulan AND $lokasi == 0) {
+            $data['totalpengunjungbu'] = $this->Data_model->getTotalBulanPengunjung($id, $bulan);
+        } else if ($taun == 0 AND $bulan == 0 AND $lokasi == $lokasi) {
+            $data['totalpengunjungbu'] = $this->Data_model->getTotalLokasiPengunjung($id, $lokasi);
+        } else if ($taun == $taun AND $bulan == $bulan AND $lokasi == 0) {
+            $data['totalpengunjungbu'] = $this->Data_model->getTotalTaunBulanPengunjung($id, $taun, $bulan);
+        } else if ($taun == $taun AND $bulan == 0 AND $lokasi == $lokasi) {
+            $data['totalpengunjungbu'] = $this->Data_model->getTotalTaunLokasiPengunjung($id, $taun, $lokasi);
+        } else if ($taun == 0 AND $bulan == $bulan AND $lokasi == $lokasi) {
+            $data['totalpengunjungbu'] = $this->Data_model->getTotalBulanLokasiPengunjung($id, $bulan, $lokasi);
+        } else if ($taun == $taun AND $bulan == $bulan AND $lokasi == $lokasi) {
+            $data['totalpengunjungbu'] = $this->Data_model->getTotalTaunBulanLokasiPengunjung($id, $taun, $bulan, $lokasi);
+        } 
+
+
+         $this->load->view('admin/data/cetak_datakunjungan', $data);
     }
 
 }

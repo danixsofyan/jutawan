@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="listing-cards-wrapper col-lg-12">
                 <?= $this->session->flashdata('message'); ?>
-                <a href="<?= base_url('data/tambahlokasi'); ?>" class="btn btn-primary mb-3">Tambah Lokasi</a>
+                <a href="<?= base_url('data/tambahlokasi'); ?>" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Tambah Lokasi</a>
                     <div class="row">
                         <?php foreach ($list as $l) : ?>
                         <div class="col-lg-4 col-sm-6">
